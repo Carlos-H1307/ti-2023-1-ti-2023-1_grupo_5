@@ -1,9 +1,10 @@
+
+
 //mongodb atlas user: infoneo   senha: infoneo123
-const mongoose          = require("mongoose");
 const passport          = require('passport');
-const connectDatabase   = require("./database/db");
 const cors              = require('cors');
-connectDatabase();
+// const connectDatabase   = require('./database/db');
+// connectDatabase();
 
 var express             = require('express');
 var app                 = express();

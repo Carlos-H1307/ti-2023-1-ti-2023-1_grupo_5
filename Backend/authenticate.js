@@ -6,8 +6,7 @@ var ExtractJwt = require('passport-jwt').ExtractJwt;
 var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 
 var config = require('./config');
-
-passport.use('cliente-local',new LocalStrategy(User.authenticate()));
+passport.use('cliente-local', new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser()); 
 
@@ -22,7 +21,6 @@ opts.secretOrKey = config.secretKey;
 
 exports.jwtPassport = passport.use(new JwtStrategy(opts,
     (jwt_payload, done) => {
-        console.log("JWT payload: ", jwt_payload);
         User.findOne({username: jwt_payload.username}).then((user) => {
             if (user) {
                 return done(null, user);

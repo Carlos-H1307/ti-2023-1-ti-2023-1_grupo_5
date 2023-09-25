@@ -1,12 +1,10 @@
-const express             = require('express');
-const authenticate        = require('../authenticate');
-const produtos            = require('../models/produtos');
-const Carrinhos           = require('../controllers/Carrinhos');
-const router              = express.Router();
+const express               = require('express');
+const CarrinhosController   = require('../controllers/CarrinhosController');
+const router                = express.Router();
 
-const carrinhos = new Carrinhos();
+const carrinhosController   = new CarrinhosController();
 
-router.get('/:id', carrinhos.get);
-router.patch('/:id', carrinhos.patch);
+router.get('/:id', carrinhosController.get);
+router.patch('/:id', carrinhosController.patch);
 
 module.exports = router;

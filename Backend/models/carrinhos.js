@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-//const normalize = require('normalize-mongoose');
 
 const carrinhosSchema = new Schema({
   produtos: [{
@@ -14,5 +13,4 @@ const carrinhosSchema = new Schema({
   }]
 });
 var carrinhos = mongoose.model('carrinhos', carrinhosSchema);
-//carrinhosSchema.plugin(normalize);
 module.exports = carrinhos

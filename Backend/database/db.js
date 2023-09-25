@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const connectDatabase = () => {
     console.log("Tentando conectar...");
 
-    mongoose.connect('mongodb+srv://infoneo:infoneo123@cluster0.0dyjgtu.mongodb.net/', 
+    mongoose.connect(process.env.DB_DEV_URL, 
     {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {console.log("MongoDB Atlas Conectado")})
     .catch((e) => {console.log(e)});

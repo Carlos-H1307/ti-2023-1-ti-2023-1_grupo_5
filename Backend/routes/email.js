@@ -1,0 +1,1 @@
+route.get("/", email.get);

@@ -3,7 +3,7 @@ var authenticate = require('../authenticate');
 let carrinhos = require('../models/carrinhos');
 let produtos = require('../models/produtos');
 
-class Carrinhos {
+class CarrinhosController {
     async get( req, res ){
         try {
             let c = await carrinhos.findById(req.params.id).populate({path: 'produtos.produto', model: produtos});
@@ -38,4 +38,4 @@ class Carrinhos {
     }
 }
 
-module.exports = Carrinhos;
+module.exports = CarrinhosController;

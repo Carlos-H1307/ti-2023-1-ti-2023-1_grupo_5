@@ -6,16 +6,11 @@ const clientesSchema = new Schema({
   username: {
     type: String,
     required: true,
+    unique: true
   },
   idCarrinho: {
     type: mongoose.Schema.Types.ObjectId,
-  },
-  
-  /*admin:{
-    type: Boolean,
-    default: false
-  }*/
-
+  }
 });
 clientesSchema.plugin(passportLocalMongoose);
 var clientes = mongoose.model('clientes', clientesSchema);
