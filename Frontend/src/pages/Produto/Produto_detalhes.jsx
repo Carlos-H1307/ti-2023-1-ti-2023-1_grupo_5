@@ -23,19 +23,23 @@ function Produto_detalhes(){
             prod == null || prod == undefined ? (<></>) : 
             (
                      <div className={styles.produto_container}>
-                         <div className={styles.campo_img}><img src={prod.img}/></div>
+                        <div className={styles.campo_img}>
+                            <img src={prod.img}/>
+                        </div>
                          <div className={styles.campo_desc}>
                             <h1 className={styles.descricao}>{prod.descricao}</h1>
                             <div className={styles.preco}>Preço: R${prod.preco}</div>
                             <div className={styles.detalhes1}><strong>Informações Técnicas:</strong>{prod.detalhes}</div>
-                            <button className={styles.botao_comprar}  
+                            <button 
+                            className={styles.botao_comprar}  
                             onClick={() => {
-                                if(conta != null){
-                                    dispatch(adicionarProduto({produto: prod}));
-                                }else{
-                                    alert("Você precisa estar logado para adicionar o produto ao carrinho.")
-                                }
-                            }}>Adicionar ao carrinho</button>
+                            if(conta != null){
+                                dispatch(adicionarProduto({produto: prod}));
+                            }else{
+                                alert("Você precisa estar logado para adicionar o produto ao carrinho.")
+                            }}}>
+                                Adicionar ao carrinho
+                            </button>
                          </div>
                 
                 

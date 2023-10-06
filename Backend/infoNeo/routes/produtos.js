@@ -3,6 +3,20 @@ var router = express.Router();
 var authenticate = require('../authenticate');
 const produtos = require("../models/produtos");
 const bodyParser = require("body-parser");
+const multer  = require('multer');
+const fs = require('fs');
+
+// Configuração do armazenamento (pasta e nome de arquivo)
+const storage = multer.diskStorage({
+  destination: './public/images',
+  filename: (req, file, callback) => {
+    return callback(null, Date.now() + '-' + file.originalname); // Nome do arquivo (timestamp + nome original)
+  },
+});
+
+// Inicialização do Multer com a configuração
+const upload = multer({ storage: storage });
+
 
 /* GET produtos listing. */
 router.get('/', (req, res, next) => {
@@ -49,23 +63,43 @@ router.get('/:id', (req, res, next) => {
   .catch((err) => next(err));
 })
 
-router.post('/', (req, res, next) => {
-  produtos.create(req.body).then( (produto) => {
+router.post('/', upload.single('file'), (req, res, next) => {
+  let reqProduto = {
+    categoria: req.body.categoria,
+    descricao: req.body.descricao,
+    detalhes: req.body.detalhes,
+    preco: req.body.preco,
+    id_lojista: req.body.idLojista,
+    img: "http://localhost:3000/images/" + req.file.filename
+  }
+
+  produtos.create(reqProduto).then( (produto) => {
     res.statusCode = 200;
     res.setHeader('Contfent-Type', 'application/json');
-    res.json(produto);
-  })
+    return res.json(produto);
+  }).catch( (err) => {
+    console.log(err);
+    return res.sendStatus(500);
+  });
 });
 
 //delete deve receber o token da loja, verificar se a loja é a que criou o produto, e se for igual, deletar
 router.delete('/', (req, res, next) => {
   let id_lojista = req.body.id_lojista;
   let id_produto = req.body.id_produto;
+  let img_path   = "public/" + req.body.img.slice(22, req.body.img.length);
   //retira o produto do banco e verifica se o id_lojista é igual ao passado no body
   produtos.findById(id_produto).then( prod => {
     if(prod != null){
       if(prod.id_lojista === id_lojista){
         produtos.deleteOne({ _id: id_produto }).then( (resposta) => {
+          fs.unlink(img_path , (err) => {
+              if (err) {
+                  throw err;
+              }
+          });
+          console.log("Imagem de " + id_produto + " deletada.");
+
           res.statusCode = 200;
           res.setHeader('Contfent-Type', 'application/json');
           res.json(resposta);

@@ -44,7 +44,11 @@ const ProdutoLojista_Editar = () => {
     function excluir(){
         let opt = window.confirm("Confirmar exclusão?");
         if(opt){
-            dispatch(excluirProduto({id_produto: produto._id, id_lojista: lojista._id, token: lojista.token}));
+            dispatch(excluirProduto({
+                id_produto: produto._id, 
+                id_lojista: lojista._id,
+                img: produto.img,
+                token: lojista.token}));
             navigate("/lojista");
         }
         //dispatch(alteraFirstFetched()); //provavelmente nao é necessario

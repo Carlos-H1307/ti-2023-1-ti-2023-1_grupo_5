@@ -33,5 +33,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store = {store}>
       <App/>
     </Provider>,
-  {/* </React.StrictMode>, */}//faz o react renderizar componentes 2 vezes -> nao sei qual utilidade
+  // </React.StrictMode>, faz o react renderizar componentes 2 vezes -> nao sei qual utilidade
 )

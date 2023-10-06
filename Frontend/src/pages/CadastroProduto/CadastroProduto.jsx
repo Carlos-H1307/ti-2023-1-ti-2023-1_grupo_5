@@ -2,30 +2,31 @@ import styles from "./CadastroProduto.module.css"
 import { cadastrarProduto } from "../../reduxFeatures/lojista"
 import { useNavigate } from "react-router-dom"
 import { connect, useDispatch, useSelector } from "react-redux"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
  function CadastroProduto(){
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const lojista = useSelector( state => state.lojista)
+    const dispatch  = useDispatch();
+    const navigate  = useNavigate();
+    const lojista   = useSelector( state => state.lojista)
     
-    function enviarProduto(){
-        let img = document.getElementById("img");
-        let categoria = document.getElementById("categoria");
-        let descricao = document.getElementById("descricao");
-        let preco = document.getElementById("preco");
-        let detalhes = document.getElementById("detalhes");
+    let [img, setImg]               = useState();
+    let [categoria, setCategoria]   = useState("");
+    let [descricao, setDescricao]   = useState("");
+    let [preco, setPreco]           = useState("");
+    let [detalhes, setDetalhes]     = useState("");
+    
+    function handleSubmit(e){
+        e.preventDefault();
 
-        const produto = 
-        {
-            img : "../../public/images/placeholder_img.jpg",
-            categoria : categoria.value,
-            descricao : descricao.value,
-            preco : preco.value,
-            detalhes : detalhes.value,
-            id_lojista : lojista._id
-        }
-        dispatch(cadastrarProduto({produto: produto, token: lojista.token}));
+        const data = new FormData();
+        data.append('file', img[0]);
+        data.append('categoria', categoria);
+        data.append('descricao', descricao);
+        data.append('preco', preco);
+        data.append('detalhes', detalhes);
+        data.append('idLojista', lojista._id);
+        
+        dispatch(cadastrarProduto({data: data}));
         navigate("/lojista");
     }
     
@@ -37,11 +38,15 @@ import { useEffect } from "react"
                 <section className={styles.cadastro_produto}>
                     
                     <div className={styles.form_box}>
-                            <form action="" className={styles.formulario_produto}>
+                            <form action="" className={styles.formulario_produto} encType="multipart/form-data">
                                 <h1>Cadastro de Produto</h1>
                                 <div className={styles.campo_form}>
                                     <div>
-                                        <select id="categoria" className={styles.input_text} required>
+                                        <select id="categoria"
+                                        className={styles.input_text}
+                                        value = {categoria}
+                                        onChange={ (e) => {setCategoria(e.target.value)} }
+                                        required>
                                             <option value="">Selecione a categoria do produto</option>
                                             <option value="placas graficas">Placas Gráficas</option>
                                             <option value="armazenamento">Armazenamento</option>
@@ -55,28 +60,55 @@ import { useEffect } from "react"
                                         </select>
                                     </div>
                                     <div>
-                                        <input id="descricao" type="text" placeholder="Descricao" className={styles.input_text} required/>
+                                        <input 
+                                        id="descricao" 
+                                        type="text" 
+                                        placeholder="Descricao" 
+                                        className={styles.input_text} 
+                                        value = {descricao}
+                                        onChange={ (e) => {setDescricao(e.target.value)} }
+                                        required/>
                                     </div>
                                     <div>
-                                        <input id="preco" type="number" placeholder="Preço" className={styles.input_text} />
+                                        <input 
+                                        id          ="preco" 
+                                        type        ="number" 
+                                        placeholder ="Preço" 
+                                        className   ={styles.input_text} 
+                                        value       = {preco}
+                                        onChange    ={ (e) => {setPreco(e.target.value)} }
+                                        required/>
                                     </div>
                                 </div>
                                 <div className={styles.flexivel}>
                                     <div className={styles.campo_desc}>
                                         <label htmlFor="detalhes">Detalhes</label>
-                                        <textarea id="detalhes" name="detalhes" cols="40" rows="15"></textarea>
+                                        <textarea 
+                                        id          ="detalhes" 
+                                        name        ="detalhes" 
+                                        cols        ="40" 
+                                        rows        ="15"
+                                        value       = {detalhes}
+                                        onChange    ={ (e) => {setDetalhes(e.target.value)} }
+                                        ></textarea>
                                     </div>
 
                                     <div className={styles.campo_img}>
                                         <label htmlFor="images" className={styles.drop_container}>
                                             <span className={styles.drop_title}>Solte aqui o arquivo</span>
                                             ou
-                                            <input id="img" type="file" className={styles.images} accept="image/*" required/>
+                                            <input 
+                                            id          ="img" 
+                                            type        ="file" 
+                                            className   ={styles.images} 
+                                            accept      ="image/*" 
+                                            onChange    ={ (e) => {setImg(e.target.files)} }
+                                            required/>
                                         </label>
                                     </div>
                                 </div>
+                                <button onClick={handleSubmit}>Cadastrar Produto</button>
                             </form>
-                            <button onClick={enviarProduto}>Cadastrar</button>
                     </div>
                 </section>
             ):useEffect(()=>{navigate("/error")})}

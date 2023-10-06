@@ -1,11 +1,12 @@
 import styles from "./Lojista.module.css"
 import ProdutoLojista from "../../components/ProdutoLojista/ProdutoLojista"
-import { Link, Navigate, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { connect, useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react";
 import { alteraFirstFetched, fetchProdutos } from "../../reduxFeatures/lojista";
 import LojistaInfo from "../../components/Lojista/LojistaInfo";
 import LojistaInfo_Editar from "../../components/Lojista/LojistaInfo_Editar";
+
 function Lojista() {
     const [editando, setEditando] = useState(false);
 
