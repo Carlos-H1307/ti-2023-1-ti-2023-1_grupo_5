@@ -3,10 +3,11 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  justify-content: space-evenly;
+  flex-direction: column-reverse;
   gap: 10px;
-  height: 100vh;
+  height: 90vh;
+  bottom: 0;
 `;
 
 export const Content = styled.div`
@@ -21,6 +22,12 @@ export const Content = styled.div`
   max-width: 350px;
   padding: 20px;
   border-radius: 5px;
+  form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
 `;
 
 export const Label = styled.label`

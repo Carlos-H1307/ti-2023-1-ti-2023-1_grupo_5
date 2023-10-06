@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../Usuario/useAuth";
 import verificaEmail from "./verificaEmail";
 import { registrarContaCliente } from "../../reduxFeatures/conta";
+import Btn from "../../components/Button/btn/btn";
 
 
 
@@ -76,6 +77,7 @@ const Registro = () => {
 
   return (
     <C.Container>
+      <Btn>aaaaa</Btn>
       <C.Label></C.Label>
       <C.Content>
         <div style={{color: msg[1]}}>{msg[0]}</div>

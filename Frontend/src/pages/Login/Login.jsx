@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import Imput from "../../components/Imput/Imput";
 import Button from "../../components/Button/Button";
-import * as C from "./Login.module";
+import * as C from "./Login.styled.jsx";
 import { Link, useNavigate } from "react-router-dom";
 import logar from "./logar";
 import { useDispatch, connect, useSelector } from "react-redux";
 import { logarContaCliente } from "../../reduxFeatures/conta";
 import { logarContaLojista } from "../../reduxFeatures/lojista";
+import styles from './Login.module.css';
 
 const Login = () => {
   const [tipo, setTipo] = useState("cliente");
@@ -20,7 +21,8 @@ const Login = () => {
   const [senha, setSenha] = useState("");
   const [error, setError] = useState("");
 
-  function logar() {
+  function logar(e) {
+    e.preventDefault();
     if (tipo === "cliente") {
       dispatch(logarContaCliente({ email: email, senha: senha })).then(res => {
         if(res.payload != null){
@@ -50,21 +52,23 @@ const Login = () => {
       <C.Container>
           <C.Label></C.Label>
           <C.Content>
-            <Imput
-              type="email"
-              placeholder="Digite seu E-mail"
-              value={email}
-              onChange={(e) => [setEmail(e.target.value), setError("")]}
-            />
-            <Imput
-              type="password"
-              placeholder="Digite sua Senha"
-              value={senha}
-              onChange={(e) => [setSenha(e.target.value), setError("")]}
-            />
-            <button id="btnAlt" type="button" value={"cliente"} onClick={alternarTipo}>Cliente</button>
-            <C.labelError>{error}</C.labelError>
-            <Button Text="Entrar" onClick={logar} />
+            <form action="" onSubmit={logar}>
+              <Imput
+                type="email"
+                placeholder="Digite seu E-mail"
+                value={email}
+                onChange={(e) => [setEmail(e.target.value), setError("")]}
+                />
+              <Imput
+                type="password"
+                placeholder="Digite sua Senha"
+                value={senha}
+                onChange={(e) => [setSenha(e.target.value), setError("")]}
+                />
+              <C.labelError>{error}</C.labelError>
+              <button id="btnAlt" className={styles.btnAlternar} type="button" value={"cliente"} onClick={alternarTipo}>Cliente</button>
+              <Button Text="Entrar" type="submit" onClick={logar} />
+            </form>
             <C.LabelLogin>
               Não tem uma conta?
               <C.Strong>

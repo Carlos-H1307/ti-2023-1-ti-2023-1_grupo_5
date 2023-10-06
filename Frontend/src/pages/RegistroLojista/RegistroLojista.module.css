@@ -1,12 +1,60 @@
 #registro_lojista_body{
     display: flex;
+    direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 10%;
+    top: 10%;
+    right: 0;
+    left: 0;
+    padding: 10px;
+}
+
+#registro_lojista_body form{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.171);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#registro_lojista_body form div{
+    width: 300px;
+    display: flex;
     flex-direction: column;
 }
+
+#registro_lojista_body form div{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputForm{
+    background-color: rgb(224, 224, 224);
+    padding-top: 10px;
+    border-radius: 5px;
+    color: black;
+    font-weight: 500;
+    border: none;
+}
+
 label{
     color: black;
 }
-button{
-    background-color: blueviolet;
+
+#btnAlt{
+    background-color: rgb(97, 97, 97);
+    padding-block: 5px;
+    font-weight: 600;
     border-radius: 5px;
-    border: solid rgb(90, 90, 90) 2px; 
+    border: none;
+}
+
+#btnAlt:hover{
+    background-color:#222;
+    color: white;
 }

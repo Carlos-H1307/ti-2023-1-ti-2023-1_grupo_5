@@ -93,17 +93,11 @@ function Header() {
                                 <ul>
                                     <li className={styles.navigation_menu_li}>
                                         <Link to="/carrinho" onClick={handleLinkClick}>
-                                            
-
-                                     
-                                    <IconButton aria-label="cart" >
-                                    <StyledBadge badgeContent={itemsCount} color="success">
-                                    <ShoppingCartIcon/>
-                                    </StyledBadge>
-                                    </IconButton>
-                                            
-                                            
-                                        
+                                            <IconButton aria-label="cart" >
+                                            <StyledBadge badgeContent={itemsCount} color="success">
+                                            <ShoppingCartIcon/>
+                                            </StyledBadge>
+                                            </IconButton>
                                         </Link>
                                     </li >
                                     <li className={styles.navigation_menu_li}><Link to="/" onClick={() => {dispatch(sairContaCliente()); navigate("/");}}><FontAwesomeIcon icon={faPersonThroughWindow} size="lg" style={{color: "#000000",}}/></Link></li>
