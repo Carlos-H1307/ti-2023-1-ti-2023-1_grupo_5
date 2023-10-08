@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../Usuario/useAuth";
 import verificaEmail from "./verificaEmail";
 import { registrarContaCliente } from "../../reduxFeatures/conta";
+import Swal from "sweetalert2";
 
 const Registro = () => {
   const [cadastrado, setCadastrado] = useState(false); // para usar navigate
@@ -46,7 +47,13 @@ const Registro = () => {
       setError(res);
       return;
     }else{
-      alert("Usuário cadatrado com sucesso!");
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Usuário cadatrado com sucesso!.',
+        showConfirmButton: false,
+        timer: 1500
+      })
       setCadastrado(true);
       navigate("/login");
     }

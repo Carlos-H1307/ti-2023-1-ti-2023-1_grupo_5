@@ -9,6 +9,7 @@ function  verificaEmailBanco(emailVerif, setEmailOk, setMsg){
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({email: emailVerif})
       }).then((res) => {
+        console.log(res.status)
         if(res.status == 204){
           setMsg(["O E-mail está disponível.", "#192"]);
           return setEmailOk(true);

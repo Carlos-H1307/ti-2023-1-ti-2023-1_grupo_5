@@ -31,8 +31,8 @@ const Produto = ({produto}) => {
                         Swal.fire({
                             icon: 'error',
                             title: 'Faça login',
-                            text: 'Você precisa estar logado para realizar esta operação.',
-                        });
+                            text: 'Você precisa estar logado para realizar esta operação!',
+                          })
                     }
                 }}>Adicionar ao carrinho</button>
             </div>

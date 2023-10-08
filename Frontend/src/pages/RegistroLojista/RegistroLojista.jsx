@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import React, { useState } from "react";
 import Imput from "../../components/Imput/Imput";
 import Button from "../../components/Button/Button";
@@ -62,7 +63,13 @@ const RegistroLojista = () => {
       //cadastrarLojista(lojista);
       dispatch(registrarLojista(lojista));
       setError("");
-      alert("Usuário cadastrado.");
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Loja cadastrada!.',
+        showConfirmButton: false,
+        timer: 1500
+      })
       return true;
     }else{
       alert("E-mail inválido.");

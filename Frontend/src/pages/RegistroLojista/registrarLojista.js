@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 export default function registrarLojista(emailOk, setError){
     let cnpj = document.getElementById("cnpj");
     let nome = document.getElementById("nome");
