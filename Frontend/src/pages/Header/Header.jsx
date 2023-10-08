@@ -63,65 +63,60 @@ function Header() {
         
         <section className={styles.cabecalho}>
             <Link to="" onClick={handleLinkClick}><img src={"../public/images/logo.png"} alt="logo" className={styles.logo}/></Link>
+            <form onSubmit={handleSubmit}>
+                                <input 
+                                type="search" 
+                                placeholder="Digite sua pesquisa aqui" 
+                                value={query}
+                                onChange={(e) => {setQuery(e.target.value)}}
+                                className={styles.pesquisar}/>
+            </form>
             <div>
                 <button className={styles.hamburger} onClick={handleMenuClick}><FontAwesomeIcon  icon={faOutdent} size="lg" style={{color: "#000000",}}/></button>
                 <div  className={styles.navigation_menu} >
                 <ul className={styles.navbar}>
                     <nav className={styles.header_li}>
-                    <div  className={styles.navigation_menu}>
-                        <ul className={`${styles.navigation_menu_ul} ${isMenuOpen ? styles.open : ""}`}>
-                        <form onSubmit={handleSubmit}>
-                            <input 
-                            type="search" 
-                            placeholder="Digite sua pesquisa aqui" 
-                            value={query}
-                            onChange={(e) => {setQuery(e.target.value)}}
-                            className={styles.pesquisar}/>
-                        </form>
-                        {
-                            lojista != null ?
-                            (
-                                <ul>
-                                    <li className={styles.navigation_menu_li}>
-                                        <Link to="/lojista" onClick={handleLinkClick}>Loja</Link>
-                                    </li >
-                                    <li className={styles.navigation_menu_li}><Link to="/" onClick={() => {dispatch(sairContaLojista()); navigate("/");}}><FontAwesomeIcon icon={faPersonThroughWindow} size="lg" style={{color: "#000000",}}/></Link></li>
-                                </ul>
-                            ) :
-                            conta != null ? 
-                            (
-                                <ul>
-                                    <li className={styles.navigation_menu_li}>
-                                        <Link to="/carrinho" onClick={handleLinkClick}>
-                                            
+                        <div  className={styles.navigation_menu}>
+                            <ul className={`${styles.navigation_menu_ul} ${isMenuOpen ? styles.open : ""}`}>
 
-                                     
-                                    <IconButton aria-label="cart" >
-                                    <StyledBadge badgeContent={itemsCount} color="success">
-                                    <ShoppingCartIcon/>
-                                    </StyledBadge>
-                                    </IconButton>
-                                            
-                                            
-                                        
-                                        </Link>
-                                    </li >
-                                    <li className={styles.navigation_menu_li}><Link to="/" onClick={() => {dispatch(sairContaCliente()); navigate("/");}}><FontAwesomeIcon icon={faPersonThroughWindow} size="lg" style={{color: "#000000",}}/></Link></li>
-                                </ul>
-                                
-                            ):
-                            (
-                                <li className={styles.navigation_menu_li}>
-                                    <Link to="/login" onClick={handleLinkClick}>Login</Link>
-                                </li>
-                            )
-                        }
+                            {
+                                lojista != null ?
+                                (
+                                    <ul>
+                                        <li className={styles.navigation_menu_li}>
+                                            <Link to="/lojista" onClick={handleLinkClick}>Loja</Link>
+                                        </li >
+                                        <li className={styles.navigation_menu_li}><Link to="/" onClick={() => {dispatch(sairContaLojista()); navigate("/");}}><FontAwesomeIcon icon={faPersonThroughWindow} size="lg" style={{color: "#000000",}}/></Link></li>
+                                    </ul>
+                                ) :
+                                conta != null ? 
+                                (
+                                    <ul>
+                                        <li className={styles.navigation_menu_li}>
+                                            <Link to="/carrinho" onClick={handleLinkClick}>
+                                                <IconButton aria-label="cart" >
+                                                <StyledBadge badgeContent={itemsCount} color="success">
+                                                <ShoppingCartIcon/>
+                                                </StyledBadge>
+                                                </IconButton>
+                                            </Link>
+                                        </li >
+                                        <li className={styles.navigation_menu_li}><Link to="/" onClick={() => {dispatch(sairContaCliente()); navigate("/");}}><FontAwesomeIcon icon={faPersonThroughWindow} size="lg" style={{color: "#000000",}}/></Link></li>
+                                    </ul>
+                                    
+                                ):
+                                (
+                                    <li className={styles.navigation_menu_li}>
+                                        <Link to="/login" onClick={handleLinkClick}>Login</Link>
+                                    </li>
+                                )
+                            }
 
-                        <li className={styles.navigation_menu_li}>
-                            <Link to="usuario" onClick={handleLinkClick}></Link></li>
-                        </ul>
-                        
-                       </div> 
+                            <li className={styles.navigation_menu_li}>
+                                <Link to="usuario" onClick={handleLinkClick}></Link></li>
+                            </ul>
+                            
+                        </div> 
        
                     </nav>
                     

@@ -13,17 +13,31 @@
 }
 
 .botaoCadastro{
-    background-color: #2D394B;
-    width: 240px;
+    /* width: 240px;
     padding: 10px;
     color: white;
-    font-size: 25px;
+    font-size: 20px;
+    font-weight: 500;
     margin-top: 20px;
     margin-bottom: 20px;
+    background-color: #0b6684;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center; */
+
+    margin-block: 20px;
+    background-color: #0b6684;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    height: 50px;
+    width: 240px;
+    font-size: 20px;
 }
 
 .botaoCadastro:hover{
-    background-color: #296275;
+    background-color: #063241;
+    cursor: pointer;
 }
 
 .campo_produtos{

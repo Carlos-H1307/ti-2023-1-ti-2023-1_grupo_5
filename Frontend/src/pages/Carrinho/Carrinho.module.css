@@ -43,6 +43,7 @@
 
 .carrinho_tbody_td{
     font-size: 13px;
+    font-weight: 700;
     padding-top: 15px;
     color:blue;
     text-align: center;
@@ -151,4 +152,12 @@
     .subtotal_botao_compra{
         margin-right: 100px;
     }
+}
+
+#qtd{
+    display: flex;
+    margin-top: 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
 }

@@ -41,6 +41,7 @@ app.use('/clientes', clientesRouter);
 app.use('/carrinhos', carrinhosRouter);
 app.use('/lojistas', lojistasRouter);
 app.use('/produtos', produtosRouter);
+app.use('/static', express.static('public'));
 
 module.exports = app;
 

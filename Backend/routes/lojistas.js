@@ -152,6 +152,7 @@ router.route('/:id')
 })
 
 
+//falta excluir as imagens
 router.route('/:id')
 .delete(authenticate.verifyUser, (req, res, next) => {
   let _id = req.params.id;

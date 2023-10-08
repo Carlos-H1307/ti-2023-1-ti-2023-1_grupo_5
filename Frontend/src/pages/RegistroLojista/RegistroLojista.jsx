@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import React, { useState } from "react";
 import Imput from "../../components/Imput/Imput";
 import Button from "../../components/Button/Button";
@@ -62,7 +63,13 @@ const RegistroLojista = () => {
       //cadastrarLojista(lojista);
       dispatch(registrarLojista(lojista));
       setError("");
-      alert("Usuário cadastrado.");
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Loja cadastrada!.',
+        showConfirmButton: false,
+        timer: 1500
+      })
       return true;
     }else{
       alert("E-mail inválido.");
@@ -81,34 +88,51 @@ function cadastrarLojista(lojista){
   
 
  return (
-    <div id={styles.registro_lojista_body}>
-      <label>Cnpj:</label>
-      <input type="text" name="cnpj" id="cnpj" placeholder="Digite o cnpj (XX.XXX.XXX/0001-XX)" value={cnpj} onChange={(e) => {setCnpj(e.target.value)}} />
+    <main>
+      <div id={styles.registro_lojista_body}>
+        <form onSubmit={ (e) => {e.preventDefault()} }>
+          <div>
+            <label htmlFor="cnpj">Cnpj:</label>
+            <input className={styles.inputForm} type="text" name="cnpj" id="cnpj" placeholder="Digite o cnpj (XX.XXX.XXX/0001-XX)" value={cnpj} onChange={(e) => {setCnpj(e.target.value)}} />
+          </div>
 
-      <label>Nome:</label>
-      <input type="text" name="nome" id="nome" placeholder="Digite o nome da loja" value={nome} onChange={(e) => {setNome(e.target.value)}}/>
+          <div>
+            <label htmlFor="nome">Nome:</label>
+            <input className={styles.inputForm} type="text" name="nome" id="nome" placeholder="Digite o nome da loja" value={nome} onChange={(e) => {setNome(e.target.value)}}/>
+          </div>
 
-      <label>Endereço:</label>
-      <input type="text" name="endereco" id="endereco" value={endereco} onChange={(e) => {setEndereco(e.target.value)}} />
-      
-      <label>E-mail</label>
-      <div style={{color: msg[1]}}>{msg[0]}</div>
-      <input type="email" name="email" id="email" placeholder="Digite o email da loja" value={email} onBlur={()=>{verificaEmail(email, setEmailOk, setMsg)}} onChange={(e) => {setEmail(e.target.value)}}/>
-      
-      <label>Telefone:</label>
-      <input type="number" name="telefone" id="tel" placeholder="Digite o telefone" value={tel} onChange={(e) => {setTel(e.target.value)}}/>
-      
-      <label>Senha:</label>
-      <input type="password" name="senha" id="senha1" placeholder="********" value={senha} onChange={(e) => {setSenha(e.target.value)}}/>
-      
-      <div style={{color: "#f00"}}>{error}</div>
+          <div>
+            <label htmlFor="endereco">Endereço:</label>
+            <input className={styles.inputForm} type="text" name="endereco" id="endereco" value={endereco} onChange={(e) => {setEndereco(e.target.value)}} />
+          </div>
+          
+          <div>
+            <label htmlFor="email">E-mail</label>
+            <div style={{color: msg[1]}}>{msg[0]}</div>
+            <input className={styles.inputForm} type="email" name="email" id="email" placeholder="Digite o email da loja" value={email} onBlur={()=>{verificaEmail(email, setEmailOk, setMsg)}} onChange={(e) => {setEmail(e.target.value)}}/>
+          </div>
 
-      <button id="btn" onClick={() => {
-        if(verificarCampos(emailOk, setError) == true){
-          navigate("/login");
-        }
-        }}>Cadastrar</button>
-    </div>
+          <div>
+            <label htmlFor="tel">Telefone:</label>
+            <input className={styles.inputForm} type="number" name="telefone" id="tel" placeholder="Digite o telefone" value={tel} onChange={(e) => {setTel(e.target.value)}}/>
+          </div>        
+          
+          <div>
+            <label htmlFor="senha1">Senha:</label>
+            <input className={styles.inputForm} type="password" name="senha" id="senha1" placeholder="********" value={senha} onChange={(e) => {setSenha(e.target.value)}}/>
+          </div>
+          
+          <div style={{color: "#f00"}}>{error}</div>
+
+          <button id={styles.btnAlt} onClick={() => {
+            if(verificarCampos(emailOk, setError) == true){
+              navigate("/login");
+            }
+          }}>Cadastrar</button>
+        </form>
+
+      </div>
+    </main>
  )
 };
 

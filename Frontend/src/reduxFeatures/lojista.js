@@ -17,7 +17,6 @@ export const logarContaLojista = createAsyncThunk('lojista/logarContaLojista',
         } catch (error) {
             console.error(error);
         }
-
     }
 )
 
@@ -45,14 +44,14 @@ export const fetchProdutos = createAsyncThunk('lojista/fetchProdutos',
 )
 
 export const cadastrarProduto = createAsyncThunk('lojista/cadastrarProduto',
-    async ({produto, token}) => {
+    async ({data, token}) => {
+
         fetch('http://localhost:3000/produtos', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: 'Bearer ' + token,
-            },
-            body: JSON.stringify(produto)
+            // headers: {
+            //     // Authorization: 'Bearer ' + token,
+            // },
+            body: data
         }).then(response => {
             if (response.ok) {
                 return response.json();
@@ -60,12 +59,11 @@ export const cadastrarProduto = createAsyncThunk('lojista/cadastrarProduto',
                 throw new Error('Erro ao adicionar o produto');
             }
         }).catch(error => console.error(error));
-
     }
 )
 
 export const excluirProduto = createAsyncThunk('lojista/excluirProduto', 
-async ({id_lojista, id_produto, token}) => {
+async ({id_lojista, id_produto, img, token}) => {
     await fetch("http://localhost:3000/produtos", {
         method: "DELETE",
         headers: {
@@ -74,7 +72,8 @@ async ({id_lojista, id_produto, token}) => {
             },
         body: JSON.stringify({
             id_lojista: id_lojista,
-            id_produto:  id_produto
+            id_produto:  id_produto,
+            img: img
         })
     })
 })
@@ -109,7 +108,7 @@ export const registrarLojista = createAsyncThunk('conta/registrarLojista',
             telefone    : lojaReq.telefone,
             password    : lojaReq.senha
           };
-          console.log(lojista)
+          
         try {
             let res = await fetch(url + '/lojistas', {
                 method: "POST",

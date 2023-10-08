@@ -7,8 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../Usuario/useAuth";
 import verificaEmail from "./verificaEmail";
 import { registrarContaCliente } from "../../reduxFeatures/conta";
-
-
+import Swal from "sweetalert2";
 
 const Registro = () => {
   const [cadastrado, setCadastrado] = useState(false); // para usar navigate
@@ -23,24 +22,6 @@ const Registro = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // function registrar(){
-
-  //   if (!email | !emailConf | !senha) {
-  //     setError("Preencha todos os campos");
-  //     return;
-  //   } else if (email !== emailConf) {
-  //     setError("Os e-mails não são iguais");
-  //     return;
-  //   }
-  //   const novoUsuario = {
-  //     email: email,
-  //     senha: senha,
-  //     produtos: []
-  //   };
-
-  // }
-
-
   const handleRegistro = () => {
     if (!emailConf | !senha) {
       setError("Preencha todos os campos");
@@ -52,7 +33,6 @@ const Registro = () => {
       setError("Senha pequena demais");
       return;
     }
-    //const res = registro(email, senha);
     
     let cliente = {
       email: email,
@@ -67,7 +47,13 @@ const Registro = () => {
       setError(res);
       return;
     }else{
-      alert("Usuário cadatrado com sucesso!");
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Usuário cadatrado com sucesso!.',
+        showConfirmButton: false,
+        timer: 1500
+      })
       setCadastrado(true);
       navigate("/login");
     }

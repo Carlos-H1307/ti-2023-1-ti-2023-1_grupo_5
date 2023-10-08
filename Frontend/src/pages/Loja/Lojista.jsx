@@ -1,11 +1,12 @@
 import styles from "./Lojista.module.css"
 import ProdutoLojista from "../../components/ProdutoLojista/ProdutoLojista"
-import { Link, Navigate, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { connect, useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react";
 import { alteraFirstFetched, fetchProdutos } from "../../reduxFeatures/lojista";
 import LojistaInfo from "../../components/Lojista/LojistaInfo";
 import LojistaInfo_Editar from "../../components/Lojista/LojistaInfo_Editar";
+
 function Lojista() {
     const [editando, setEditando] = useState(false);
 
@@ -19,7 +20,7 @@ function Lojista() {
     }
 
     return (
-        <>
+        <main>
         {
             lojista != null  ? (
                 <div className={styles.loja}>
@@ -32,7 +33,7 @@ function Lojista() {
 
                 <h1>Produtos</h1>
                 <Link to="/cadastroProduto">
-                    <h2 className={styles.botaoCadastro}>Cadastrar Produto</h2>
+                    <button className={styles.botaoCadastro}>Cadastrar Produto</button>
                 </Link>
                 {lojista.produtos.length != 0 ? (
                     <div className={styles.campo_produtos}>
@@ -42,7 +43,7 @@ function Lojista() {
                 </div>
             ) : <>{() => {navigate("/error")}}</>
         }
-        </>
+        </main>
         
     )
 }

@@ -4,11 +4,30 @@
 .campo_btn{
     display: flex;
     flex-direction: row;
-    margin-top: 10px;
-    gap: 35px;
+    justify-content: space-between;
+    margin-block: 30px;
 }
 
-.btn_exclusao{
-    background-color: rgb(255, 68, 68);
+.btn{
+    background-color: #0b6684;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    height: 50px;
+    width: 150px;
+    font-size: 20px;
+}
+
+.btn:hover{
+    background-color: #063241;
+    cursor: pointer;
+}
+
+#btn_deletar{
+    background-color: #840b0b;
+}
+
+#btn_deletar:hover{
+    background-color: #410606;
 }
 

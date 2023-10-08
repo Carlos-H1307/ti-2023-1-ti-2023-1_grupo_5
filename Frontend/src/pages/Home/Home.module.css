@@ -1,21 +1,8 @@
 /*formatacao pagina principal*/
-
-
-body{
-    background-color: #eee;
-}
-
 .titulos{
     font-size: 30px;
-    margin-bottom: 40px;
-}
-
-main{
     display: flex;
-    flex-direction: column;
-    margin-top: 40px;
-    padding-right: 50px;
-    padding-left: 50px;
+    align-items: end;
 }
 
 .parte_cima{
@@ -26,15 +13,18 @@ main{
 
 .ver_todos{
     color: black;
-    font-weight: 500;
+    font-weight: 600;
+    align-items: end;
+    display: flex;
 }
 
 .ver_todos:hover{
-    color: #999;
+    color: rgb(230, 108, 2);
     text-decoration: underline;
 }
 
 .produto{
+    margin-top: 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
