@@ -28,13 +28,13 @@ export default function Pesquisa() {
     search = search.replaceAll("?q=", "");
     
     return (
-        <div>
+        <main>
             <div>
                 <div className={styles.encontrados}>{qtd} Resultados encontrados com a descrição "{search}".</div>
             </div>
             {
                 teste() && (<div className={styles.div_prod}>{produtos2.map((prod)=><Produto produto={prod} key={prod._id}/>)}</div>)
             }
-        </div>
+        </main>
     )
 }

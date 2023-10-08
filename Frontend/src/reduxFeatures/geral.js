@@ -59,19 +59,25 @@ export const geralSlice = createSlice({
     },
     extraReducers: {
         [fetchProdutos.fulfilled]: (state, action) => fulfillfetchProdutosReducer(state, action.payload),
+        [fetchProdutos.pending]: (state, action) => pendingProdutosReducer(state, action.payload),
         [fetchProduto.fulfilled]: (state, action) => fulfillfetchProdutoReducer(state, action.payload),
+        [fetchProduto.pending]: (state, action) => pendingProdutoReducer(state, action.payload),
         [getProdutosNovidades.fulfilled]: (state, action) => fulfillfetchGetProdutosNovidadesReducer(state, action.payload),
+        [getProdutosNovidades.pending]: (state, action) => pendingGetProdutosNovidadesReducer(state, action.payload),
     }
 })
 
 function alteraFetchedReducer(state, conta){
-    // if(state.fetched == true){
-    //     state.fetched = false;
-    // }else{
-    //     state.fetched = true;
-    // }
-    //state.fetched = true;
-    console.log("nao utilizada");
+    return state;
+}
+
+function pendingProdutoReducer(state, payload){
+    let s = {
+        produto: 'pending',
+        produtos: null,
+        fetched:true
+    };
+    state = s;
     return state;
 }
 
@@ -85,13 +91,36 @@ function fulfillfetchProdutoReducer(state, payload){
     return state;
 }
 
-function fulfillfetchProdutosReducer(state, payload){
+function pendingProdutosReducer(state, payload){
     let s = {
         produto: null,
-        produtos: payload,
+        produtos: 'pending',
         fetched:  false,
-    };
+    }
     state = s;
+    return state;
+}
+
+function fulfillfetchProdutosReducer(state, payload){
+    let prod = payload;
+
+    if( prod.length == 0 ){
+        prod = null;
+    }
+
+    let s = {
+        produto: null,
+        produtos: prod,
+        fetched:  false,
+        msg: "Não há produtos cadastrados."
+    };
+
+    state = s;
+    return state;
+}
+
+function pendingGetProdutosNovidadesReducer(state, payload){
+    state = {produtosNovidades: 'pending'};
     return state;
 }
 
@@ -99,6 +128,7 @@ function fulfillfetchGetProdutosNovidadesReducer(state, payload){
     state = {produtosNovidades: payload};
     return state;
 }
+
 
 export default geralSlice.reducer;
 export const { alteraFetched } = geralSlice.actions;

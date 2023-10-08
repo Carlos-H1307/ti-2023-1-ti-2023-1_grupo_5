@@ -9,20 +9,19 @@
 /*Cabecalho*/
 
 .cabecalho{
-    padding-left: 4vw;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding-block: 10px;
-    background-color: #d8d8d8;
-    justify-content: space-between;
-    height: 60px;
-    width: 100%;
-    position: relative;
-    padding: 0.5rem 0rem;
-    color: black;
-    box-shadow: 0px 3px 5px  2px rgba(0, 0, 0, 0.3);
-
+  padding-left: 4vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-block: 10px;
+  background-color: #d8d8d8;
+  justify-content: space-between;
+  height: 60px;
+  width: 100%;
+  position: relative;
+  padding: 0.5rem 0rem;
+  color: black;
+  box-shadow: 0px 3px 5px  2px rgba(0, 0, 0, 0.3);
 }
 .cabecalho a{
     height: 100%;
@@ -184,7 +183,7 @@
 
 .pesquisar{
     height: 40px;
-    width: 30vw;
+    width: 50vw;
     min-width: 100px;
     border:none;
     border-radius: 10px;

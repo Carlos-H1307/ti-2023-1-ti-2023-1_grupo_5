@@ -1,6 +1,11 @@
 .btnAlternar{
     border-radius: 5px;
-    background-color: #bebebe;
+    background-color: #8b8b8b;
     border: none;
     padding-block: 5px;
+}
+
+#div_btn{
+    display: flex;
+    justify-content: center;
 }

@@ -1,4 +1,5 @@
 import {createStore, createSlice, createAsyncThunk} from "@reduxjs/toolkit"
+import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 const initialConta = null;
 const url = 'http://localhost:3000';
@@ -79,7 +80,13 @@ function processarCompraReducer(state, payload){
     if(state.carrinho.length != 0){
         state.carrinho = [];
         alterarCarrinho(state.carrinho, state.idCarrinho, state.token);
-        alert("Compra realizada!");
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Sua compra foi realizada',
+            showConfirmButton: false,
+            timer: 1500
+        });
     }
     return state;
 }

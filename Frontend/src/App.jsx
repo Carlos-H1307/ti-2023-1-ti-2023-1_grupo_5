@@ -17,6 +17,8 @@ import ErrorPage from "./pages/ErrorPage/ErrorPage"
 import RegistroLojista from "./pages/RegistroLojista/RegistroLojista"
 import {p as produtos, c as categorias} from "./components/Dados"
 import {connect} from "react-redux"
+import styles from "./Global.module.css";
+import Loading from "./components/Loading/Loading"
 
 const App=()=> {
   return (

@@ -15,7 +15,7 @@ const Carrinho = () => {
   let quantidadeTotal = 0;
   let total = 0;
   return (
-    <div>
+    <main>
       {
         conta != null ?
         (
@@ -46,7 +46,7 @@ const Carrinho = () => {
                           <td className={styles.carrinho_tbody_td}><img src={prod.produto.img} className={styles.carrinho_table_img} alt={prod.produto.descricao} /></td>
                           <td className={styles.carrinho_tbody_td}>{prod.produto.descricao}</td>
                           <td className={styles.carrinho_tbody_td}>R$ {prod.produto.preco}</td>
-                          <td className={styles.carrinho_tbody_td}>
+                          <td id={styles.qtd} className={styles.carrinho_tbody_td}>
                             <button onClick={ () => {dispatch(retirarQuantidade({_id: prod.produto._id}))} }>-</button>
                             {prod.quantidade}
                             <button onClick={ () => {dispatch(adicionarQuantidade({_id: prod.produto._id}))} }>+</button>
@@ -79,8 +79,9 @@ const Carrinho = () => {
                   </tbody>
                 </table>
                 <button className={styles.subtotal_botao_compra} onClick={() => {
-                  let e;
-                  e = dispatch(processarCompra())
+                  if(carrinho.length > 0){
+                    dispatch(processarCompra());
+                  }
                 }}>Comprar</button>
               </div>
             </section>
@@ -88,7 +89,7 @@ const Carrinho = () => {
 
         ) : <>{navigate("/error")}</>
       }
-    </div>
+    </main>
 
 
   )

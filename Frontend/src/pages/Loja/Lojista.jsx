@@ -20,7 +20,7 @@ function Lojista() {
     }
 
     return (
-        <>
+        <main>
         {
             lojista != null  ? (
                 <div className={styles.loja}>
@@ -33,7 +33,7 @@ function Lojista() {
 
                 <h1>Produtos</h1>
                 <Link to="/cadastroProduto">
-                    <h2 className={styles.botaoCadastro}>Cadastrar Produto</h2>
+                    <button className={styles.botaoCadastro}>Cadastrar Produto</button>
                 </Link>
                 {lojista.produtos.length != 0 ? (
                     <div className={styles.campo_produtos}>
@@ -43,7 +43,7 @@ function Lojista() {
                 </div>
             ) : <>{() => {navigate("/error")}}</>
         }
-        </>
+        </main>
         
     )
 }

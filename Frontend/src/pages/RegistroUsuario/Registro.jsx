@@ -7,9 +7,6 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../Usuario/useAuth";
 import verificaEmail from "./verificaEmail";
 import { registrarContaCliente } from "../../reduxFeatures/conta";
-import Btn from "../../components/Button/btn/btn";
-
-
 
 const Registro = () => {
   const [cadastrado, setCadastrado] = useState(false); // para usar navigate
@@ -24,24 +21,6 @@ const Registro = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // function registrar(){
-
-  //   if (!email | !emailConf | !senha) {
-  //     setError("Preencha todos os campos");
-  //     return;
-  //   } else if (email !== emailConf) {
-  //     setError("Os e-mails não são iguais");
-  //     return;
-  //   }
-  //   const novoUsuario = {
-  //     email: email,
-  //     senha: senha,
-  //     produtos: []
-  //   };
-
-  // }
-
-
   const handleRegistro = () => {
     if (!emailConf | !senha) {
       setError("Preencha todos os campos");
@@ -53,7 +32,6 @@ const Registro = () => {
       setError("Senha pequena demais");
       return;
     }
-    //const res = registro(email, senha);
     
     let cliente = {
       email: email,
@@ -77,7 +55,6 @@ const Registro = () => {
 
   return (
     <C.Container>
-      <Btn>aaaaa</Btn>
       <C.Label></C.Label>
       <C.Content>
         <div style={{color: msg[1]}}>{msg[0]}</div>

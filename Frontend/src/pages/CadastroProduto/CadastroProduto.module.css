@@ -63,7 +63,7 @@ textarea{
 }
 
 .drop_container {
-    background-color: #18213383;
+    background-color: #2c54a383;
     position: relative;
     display: flex;
     gap: 10px;
@@ -71,6 +71,7 @@ textarea{
     justify-content: center;
     align-items: center;
     height: 200px;
+    width: 230px;
     padding: 20px;
     border-radius: 4px;
     border: 2px dashed #555;
@@ -109,14 +110,22 @@ textarea{
     flex-direction: column;
     gap: 50px;
     padding: 50px;
-    background-color: #2D394B;
-    border: solid 2px #F0F8FF;
-    border-radius: 7px;
+    background-color: #51727a;
     margin-bottom: 30px;
 }
+
+.images{
+    display:none;
+}
+
 
   @media(max-width:950px) {
     form{
         flex-direction: column;
     }
   }
+
+#btn_div{
+    display: flex;
+    justify-content: center;
+}

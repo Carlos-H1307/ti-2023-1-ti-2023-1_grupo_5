@@ -17,7 +17,6 @@ export const logarContaLojista = createAsyncThunk('lojista/logarContaLojista',
         } catch (error) {
             console.error(error);
         }
-
     }
 )
 

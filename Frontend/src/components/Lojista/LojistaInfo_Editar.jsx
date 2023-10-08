@@ -41,7 +41,7 @@ export default function LojistaInfo_Editar({ lojista, setEditando }) {
             </div>
 
         </div>
-        <button onClick={salvar}>Salvar</button>
+        <button id={styles.btn_salvar} onClick={salvar}>Salvar</button>
         </>
     )
 } 

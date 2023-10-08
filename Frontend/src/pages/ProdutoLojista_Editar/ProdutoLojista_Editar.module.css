@@ -24,16 +24,25 @@
     border-radius: 5px;
 }
 
+#div_botoes{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .botoes{ 
-    background-color: #2D394B;
-    width: 100px;
-    padding: 10px;
+    background-color: #0b6684;
+    border-radius: 5px;
     color: white;
-    font-size: 15px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 15px;
     border: none;
+    height: 50px;
+    width: 150px;
+    font-size: 20px;
+}
+
+#botao_excluir{
+    background-color: rgb(117, 41, 41)
 }
 
 .botoes:hover{ 

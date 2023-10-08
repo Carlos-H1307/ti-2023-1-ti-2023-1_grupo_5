@@ -17,6 +17,21 @@
     padding-left: 30px;
 }
 
+#btn_salvar{
+    background-color: #0b6684;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    height: 50px;
+    width: 150px;
+    font-size: 20px;
+}
+
+#btn_salvar:hover{
+    background-color: #063241;
+    cursor: pointer;
+}
+
 input{
     border-radius: 2px;
     border: none;

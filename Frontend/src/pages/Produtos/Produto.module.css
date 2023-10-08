@@ -2,17 +2,14 @@
     width: 250px;
     background-color: white;
     padding: 20px;
-    margin: 31px;
+    margin: 30px;
 
 }
-
-
 
 .novidade_produto_imagem{
     width: 200px;
-    height: 150px;
+    height: 100px;
 }
-
 
 .novidade_produto_descricao{
     max-width: 250px;
@@ -36,24 +33,6 @@
     color: black;
     opacity: 50%;
 }
-
-.novidade_produto_botao{
-    margin-bottom: 40px;
-    margin-top: 20px;
-    background-color: #296275;
-    color: white;
-    border: none;
-    height: 50px;
-    width: 150px;
-    font-size: 20px;
-    text-align: center;
-    padding: 12px;
-}
-
-.novidade_produto_botao:hover{
-    background-color: #2d394b;
-}
-
 
 .produto{
     display: flex;

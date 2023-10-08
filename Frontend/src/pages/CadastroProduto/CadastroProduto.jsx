@@ -85,18 +85,17 @@ import { useEffect, useState } from "react"
                                         <label htmlFor="detalhes">Detalhes</label>
                                         <textarea 
                                         id          ="detalhes" 
-                                        name        ="detalhes" 
-                                        cols        ="40" 
-                                        rows        ="15"
+                                        name        ="detalhes"
+                                        cols        ="36" 
+                                        rows        ="4"
                                         value       = {detalhes}
                                         onChange    ={ (e) => {setDetalhes(e.target.value)} }
                                         ></textarea>
                                     </div>
 
                                     <div className={styles.campo_img}>
-                                        <label htmlFor="images" className={styles.drop_container}>
-                                            <span className={styles.drop_title}>Solte aqui o arquivo</span>
-                                            ou
+                                        <label htmlFor="img" className={styles.drop_container}>
+                                            <span className={styles.drop_title}>Clique ou solte aqui o arquivo.</span>
                                             <input 
                                             id          ="img" 
                                             type        ="file" 
@@ -107,7 +106,9 @@ import { useEffect, useState } from "react"
                                         </label>
                                     </div>
                                 </div>
-                                <button onClick={handleSubmit}>Cadastrar Produto</button>
+                                <div id={styles.btn_div}>
+                                    <button onClick={handleSubmit}>Cadastrar Produto</button>
+                                </div>
                             </form>
                     </div>
                 </section>

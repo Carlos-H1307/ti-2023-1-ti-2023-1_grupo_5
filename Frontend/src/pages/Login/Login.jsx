@@ -66,7 +66,9 @@ const Login = () => {
                 onChange={(e) => [setSenha(e.target.value), setError("")]}
                 />
               <C.labelError>{error}</C.labelError>
-              <button id="btnAlt" className={styles.btnAlternar} type="button" value={"cliente"} onClick={alternarTipo}>Cliente</button>
+              <div id={styles.div_btn}>
+                <button id="btnAlt" className={styles.btnAlternar} type="button" value={"cliente"} onClick={alternarTipo}>Cliente</button>
+              </div>
               <Button Text="Entrar" type="submit" onClick={logar} />
             </form>
             <C.LabelLogin>
